@@ -19,40 +19,39 @@ router.get('/movies/create', (req, res) => {
 
 
     Celebrity.find()
-    .then((allCelebrities) => {
-        res.render('movies/new-movie.hbs' ,{allCelebrities})
-    })
-    .catch((err) => console.log(`Error while creating a new celebrity: ${err}`))
+        .then((allCelebrities) => {
+            res.render('movies/new-movie.hbs', { allCelebrities })
+        })
+        .catch((err) => console.log(`Error while creating a new celebrity: ${err}`))
 
 
-    
+
 })
 
 router.get('/movies/:idMovie', (req, res) => {
-    const { idMovie} = req.params;
-let data = {
-    movieData:{},
-    castData:[]
-}
+    const { idMovie } = req.params;
+    let data = {
+        movieData: {},
+        castData: []
+    }
     Movie.findById(idMovie).then((dataMovie) => {
         console.log(dataMovie.cast);
         console.log(dataMovie)
         dataMovie.cast.forEach((idActor) => {
-            
             Celebrity.findById(idActor).then((foundActor) => {
                 console.log(foundActor)
-                data.castData.push(foundActor); 
+                data.castData.push(foundActor);
             })
             data.movieData = dataMovie;
-            res.render('movies/movie-details', {data});
         })
-        
+        res.render('movies/movie-details',  data );
+
     })
 })
 
 
 router.post('/movies/create', (req, res) => {
-    const { title, genre, plot, cast ,} = req.body
+    const { title, genre, plot, cast, } = req.body
     const newMovie = { title, genre, plot, cast }
     console.log(newMovie);
     Movie.findOne({ title })
