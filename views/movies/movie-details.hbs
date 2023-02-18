@@ -1,0 +1,14 @@
+<h2>Movie Details</h2>
+
+{{#if data.movieData}}
+<p> Title: {{data.movieData.title}} </p> <br> 
+<p> Genre: {{data.movieData.genre}}</p> <br> 
+<p> Plot: {{data.movieData.plot}}</p> <br> 
+{{/if}}
+
+{{#each data.castData}}
+<p> Name: {{name}} </p> <br> 
+<p> Occupation: {{occupation}} </p> <br> 
+<p> Catchphrase: {{catchphrase}} </p> <br> 
+
+{{/each}}

@@ -6,8 +6,15 @@ const Celebrity = require('../models/Celebrity.model')
 
 router.get('/celebrities', (req, res) => {
   console.log('celebrities route')
-  // res.render('new-celebrity.hbs', {})
+
+  Celebrity.find().then((data) => {
+
+    res.render('celebrities/celebrities', {data});
+
+  })
 })
+
+
 
 router.get('/celebrities/create', (req, res) => {
   // form
@@ -30,7 +37,7 @@ router.post('/celebrities/create', (req, res) => {
         // prettier-ignore
         console.log(newCelebrity)
         Celebrity.create(newCelebrity).then(() =>
-          res.redirect('/celebrities/create')
+          res.redirect('/celebrities')
         )
       } else {
         // The user already exists ...
