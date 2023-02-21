@@ -1,6 +1,11 @@
-<a href="/"> Go Back</a>
+<a class='btn btn-primary' href='/'> Go Back</a>
 <h2>Movies: </h2>
-{{#each data}}
-<p> {{title}}</p>
-<a href="/movies/{{_id}}">See Details</a>
-{{/each}}
+<div id='movies-list' class='container'>
+  {{#each data}}
+    <div id='movie-list-item' class='card'>
+      <h4 class='card-text'> {{title}}</h4>
+      <a class='btn btn-primary' href='/movies/{{_id}}'>See Details</a>
+    </div>
+  {{/each}}
+
+</div>

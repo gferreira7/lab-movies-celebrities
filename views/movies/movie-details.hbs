@@ -1,26 +1,27 @@
-<h2>Movie Details</h2>
+<a class='btn btn-secondary' href='/'> Go Back</a>
+<div class='movie-details-page container-fluid' class='container p-5 mb-4 bg-light rounded-3'>
+  <h2>Movie Details</h2>
 
-<p> Title: {{movieData.title}} </p>
-<br />
-<p> Genre: {{movieData.genre}}</p>
-<br />
-<p> Plot: {{movieData.plot}}</p>
-<br />
+  <div class='movie-details-page  py-5'>
+    <p> </p>
 
-{{#each castData}}
-  <p> Name: {{name}} </p>
-  <br />
-  <p> Occupation: {{occupation}} </p>
-  <br />
-  <p> Catchphrase: {{catchphrase}} </p>
-  <br />
+    <h1 class='display-5 fw-bold'>Title: {{movieData.title}}</h1>
+    <p class='col-md-8 fs-4'>Genre: {{movieData.genre}}</p>
+    <p class='col-md-8 fs-4'>Plot: {{movieData.plot}}</p>
+    <h3>Cast:</h3>
+    {{#each castData}}
+      <p> Name: {{name}} </p>
+      <p> Occupation: {{occupation}} </p>
+      <p> Catchphrase: {{catchphrase}} </p>
+    {{/each}}
 
-{{/each}}
+    <a
+      class='btn btn-primary btn-lg'
+      href='/movies/{{movieData._id}}/edit'
+    >Edit</a>
 
-<form action='/movies/{{movieData._id}}/delete' method='post'>
-
-  <button>Delete</button>
-
-</form>
-
-<a href="/movies/{{movieData._id}}/edit">Edit</a>
+    <form action='/movies/{{movieData._id}}/delete' method='post'>
+      <button class='btn btn-danger'>Delete</button>
+    </form>
+  </div>
+</div>
